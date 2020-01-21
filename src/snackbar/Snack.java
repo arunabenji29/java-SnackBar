@@ -2,7 +2,7 @@ package snackbar;
 
 public class Snack
 {
-	public int maxId=0;
+	private static int maxId=0;
 	private int id;
 	private String name;
 	private int quantity;
@@ -53,7 +53,7 @@ public class Snack
 		this.vendingId = id;
 	}
 
-	public VendingMachine getVendingId(){
+	public int getVendingId(){
 		return this.vendingId;
 	}
 
@@ -61,11 +61,14 @@ public class Snack
 		this.quantity = this.quantity+givenQuantity;
 	}
 
-	public void buySnack(int buyQuantity){
+	public int buySnack(int buyQuantity){
+    System.out.println("before buying: "+ this.quantity);
 		this.quantity = this.quantity-buyQuantity;
+    System.out.println("after buying: "+ this.quantity);
+    return this.quantity;
 	}
 
-	public int totalCost(int quantity){
+	public double totalCost(int quantity){
 		double totalCost = quantity * this.cost;
 		return totalCost;
 	}
